@@ -1,0 +1,25 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id       Int    @id @default(autoincrement()) @map("p_id")
+  code    String @map("p_code")
+  codeNumber Int @map("p_code_number")
+  name   String  @map("p_name")
+  colourCode   String  @map("p_colour_code")
+  colourName   String  @map("p_colour_name")
+  sizeCode   String  @map("p_size_code")
+  sizeName   String  @map("p_size_name")
+  createdAt  DateTime   @default(now()) @map("p_created_at")
+  updatedAt  DateTime   @default(now()) @map("p_updated_at")
+  @@map("TB_PRODUCTS")
+}
